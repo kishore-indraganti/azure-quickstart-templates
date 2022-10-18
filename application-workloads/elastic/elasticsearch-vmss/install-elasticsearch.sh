@@ -91,7 +91,7 @@ install_java()
     fi
 
     tar xzf jdk-8u131-linux-x64.tar.gz -C /var/lib
-    export JAVA_HOME=/var/lib/jdk1.8.0_291
+    export JAVA_HOME=/var/lib/jdk1.8.0_131
     export PATH=$PATH:$JAVA_HOME/bin
     log "JAVA_HOME: $JAVA_HOME"
     log "PATH: $PATH"
