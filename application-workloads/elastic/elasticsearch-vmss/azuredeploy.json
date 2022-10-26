@@ -140,26 +140,26 @@
       "properties": {
         "securityRules": [
           {
-            "name": "ssh",
-            "properties": {
-              "description": "Allows inbound ssh traffic",
-              "protocol": "Tcp",
-              "sourcePortRange": "*",
-              "destinationPortRange": "22",
-              "sourceAddressPrefix": "*",
-              "destinationAddressPrefix": "*",
-              "access": "Allow",
-              "priority": 100,
-              "direction": "Inbound"
-            }
-          },
-          {
-            "name": "Elasticsearch",
+            "name": "allow_all - kibana",
             "properties": {
               "description": "Allows inbound HTTP traffic from anyone",
               "protocol": "Tcp",
               "sourcePortRange": "*",
               "destinationPortRange": "5601",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 200,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "allow_all - elasticsearch",
+            "properties": {
+              "description": "Allows inbound HTTP traffic from anyone",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "9200",
               "sourceAddressPrefix": "*",
               "destinationAddressPrefix": "*",
               "access": "Allow",
