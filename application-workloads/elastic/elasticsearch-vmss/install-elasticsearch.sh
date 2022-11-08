@@ -130,6 +130,7 @@ configure_es()
 	log "Update configuration"
 	mv /etc/elasticsearch/elasticsearch.yml /etc/elasticsearch/elasticsearch.bak
 	echo "cluster.name: $CLUSTER_NAME" >> /etc/elasticsearch/elasticsearch.yml
+    echo "cluster.initial_master_nodes: [master-vm0, master-vm1, master-vm2]" >> /etc/elasticsearch/elasticsearch.yml
 	echo "node.name: ${HOSTNAME}" >> /etc/elasticsearch/elasticsearch.yml
 	echo "discovery.zen.minimum_master_nodes: 2" >> /etc/elasticsearch/elasticsearch.yml
 	echo 'discovery.zen.ping.unicast.hosts: ["10.0.0.10", "10.0.0.11", "10.0.0.12"]' >> /etc/elasticsearch/elasticsearch.yml
