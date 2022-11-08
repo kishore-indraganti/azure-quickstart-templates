@@ -117,7 +117,7 @@ install_es()
     if [ ${IS_DATA_NODE} -eq 0 ];
     then
         wget https://artifacts.elastic.co/downloads/kibana/kibana-7.10.2-amd64.deb
-        shasum -a 512 kibana-7.10.2-amd64.deb 
+        shasum -a 512 kibana-7.10.2-amd64.deb
         sudo dpkg -i kibana-7.10.2-amd64.deb
         pushd /usr/share/kibana/
         bin/kibana-plugin install x-pack
