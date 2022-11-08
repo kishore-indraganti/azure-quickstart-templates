@@ -105,19 +105,20 @@ install_java()
 
 install_es()
 {
-    wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add -
-    apt-get install apt-transport-https
-    echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | tee -a /etc/apt/sources.list.d/elastic-7.x.list
-    apt-get update -y
-    apt-get install --reinstall resolvconf
-    apt-get install -y elasticsearch
+    wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.10.2-amd64.deb
+    wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.10.2-amd64.deb.sha512
+    shasum -a 512 -c elasticsearch-7.10.2-amd64.deb.sha512 
+    sudo dpkg -i elasticsearch-7.10.2-amd64.deb
     pushd /usr/share/elasticsearch/
     bin/elasticsearch-plugin install x-pack --batch
+    bin/elasticsearch-plugin install https://github.com/alexklibisz/elastiknn/releases/download/7.10.2.3/elastiknn-7.10.2.3.zip
     popd
 
     if [ ${IS_DATA_NODE} -eq 0 ];
     then
-        apt-get install -y kibana
+        wget https://artifacts.elastic.co/downloads/kibana/kibana-7.10.2-amd64.deb
+        shasum -a 512 kibana-7.10.2-amd64.deb 
+        sudo dpkg -i kibana-7.10.2-amd64.deb
         pushd /usr/share/kibana/
         bin/kibana-plugin install x-pack
         popd
