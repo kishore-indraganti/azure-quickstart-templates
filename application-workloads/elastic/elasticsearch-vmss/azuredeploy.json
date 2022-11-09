@@ -163,7 +163,7 @@
               "sourceAddressPrefix": "*",
               "destinationAddressPrefix": "*",
               "access": "Allow",
-              "priority": 200,
+              "priority": 201,
               "direction": "Inbound"
             }
           }
@@ -229,7 +229,7 @@
         ],
         "loadBalancingRules": [
           {
-            "name": "LBRule",
+            "name": "kibana",
             "properties": {
               "frontendIPConfiguration": {
                 "id": "[variables('frontendIpConfigId')]"
@@ -240,6 +240,25 @@
               "protocol": "Tcp",
               "frontendPort": 5601,
               "backendPort": 5601,
+              "enableFloatingIP": false,
+              "idleTimeoutInMinutes": 5,
+              "probe": {
+                "id": "[variables('loadBalancerProbeId')]"
+              }
+            }
+          },
+          {
+            "name": "elasticsearch",
+            "properties": {
+              "frontendIPConfiguration": {
+                "id": "[variables('frontendIpConfigId')]"
+              },
+              "backendAddressPool": {
+                "id": "[variables('loadBalancerPoolId')]"
+              },
+              "protocol": "Tcp",
+              "frontendPort": 9200,
+              "backendPort": 9200,
               "enableFloatingIP": false,
               "idleTimeoutInMinutes": 5,
               "probe": {
