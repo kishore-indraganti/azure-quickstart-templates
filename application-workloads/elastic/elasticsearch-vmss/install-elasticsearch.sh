@@ -111,7 +111,7 @@ install_es()
     sudo dpkg -i elasticsearch-7.10.2-amd64.deb
     pushd /usr/share/elasticsearch/
     bin/elasticsearch-plugin install x-pack --batch
-    bin/elasticsearch-plugin install https://github.com/alexklibisz/elastiknn/releases/download/7.10.2.3/elastiknn-7.10.2.3.zip
+    sudo bin/elasticsearch-plugin install https://github.com/alexklibisz/elastiknn/releases/download/7.10.2.3/elastiknn-7.10.2.3.zip --batch
     popd
 
     if [ ${IS_DATA_NODE} -eq 0 ];
