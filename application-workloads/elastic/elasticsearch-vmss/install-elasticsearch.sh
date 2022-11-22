@@ -143,7 +143,7 @@ configure_es()
 	    echo "node.data: true" >> /etc/elasticsearch/elasticsearch.yml
 	else
         echo "node.master: true" >> /etc/elasticsearch/elasticsearch.yml
-        echo "node.data: false" >> /etc/elasticsearch/elasticsearch.yml
+        echo "node.data: true" >> /etc/elasticsearch/elasticsearch.yml
 	fi
 }
 
@@ -227,7 +227,7 @@ start_service()
 
 log "starting elasticsearch setup"
 
-install_java
+#install_java
 install_es
 configure_es
 configure_system
